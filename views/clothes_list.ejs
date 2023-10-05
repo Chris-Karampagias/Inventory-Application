@@ -1,0 +1,18 @@
+<% extend('index')%>
+<h1 class="text-4xl font-bold text-center mb-10">Clothes list</h1>
+<div class="flex flex-wrap place-content-center gap-[20px]">
+  <%clothes.forEach(clothe => {%>
+  <a
+    href="<%= clothe.url%>"
+    class="w-[200px] h-[200px] text-4xl bg-slate-500 text-white rounded-2xl flex flex-col place-content-center gap-5 p-2"
+  >
+    <h1><%=clothe.name%></h1>
+    <p><%=clothe.price%>€</p>
+  </a>
+  <%})%>
+  <a
+    class="w-[200px] h-[200px] text-5xl bg-slate-500 text-white text-center rounded-2xl pt-10"
+    href="/shop/create"
+    >Add clothe</a
+  >
+</div>

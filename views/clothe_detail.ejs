@@ -1,0 +1,16 @@
+<% extend('index')%>
+
+<div
+  class="flex flex-col justify-between absolute rounded-2xl h-[700px] bg-slate-500 text-white top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+>
+  <h1 class="text-5xl text-center"><%=clothe.name%></h1>
+  <div class="text-5xl flex justify-center gap-10">
+    <h2><b>Price:</b> <%= clothe.price%>€</h2>
+    <h2><b>Stock:</b> <%= clothe.stock_number%></h2>
+  </div>
+  <p class="text-3xl ml-2"><b>Description:</b> <%= clothe.description%></p>
+  <div class="text-5xl flex justify-center gap-10 mb-5">
+    <a href="<%=clothe.url%>/update">Update</a>
+    <a href="<%=clothe.url%>/delete">Delete</a>
+  </div>
+</div>

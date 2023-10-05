@@ -1,0 +1,20 @@
+<% extend('index')%>
+
+<div class="w-full text-center flex flex-col gap-[20px] mt-5 text-4xl">
+  <h1 class="font-bold">Inventory Application made by Chris Karampagias</h1>
+  <p>
+    It showcases the use of routers, controllers, views & models using Node,
+    Express, EJS & MongoDB with Mongoose. The app is <b>not</b> responsive.
+  </p>
+</div>
+<div class="flex flex-col h-[80vh] items-center justify-center gap-[150px]">
+  <%categories.forEach(category => {%>
+  <a
+    href="<%=category.url%>"
+    class="w-1/2 bg-slate-500 text-white text-center h-fit rounded-2xl text-5xl p-2 cursor-pointer"
+  >
+    <h2><%=category.name%></h2>
+    <p class="text-xl mt-10"><%= category.description%></p>
+  </a>
+  <%})%>
+</div>
