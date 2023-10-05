@@ -8,7 +8,11 @@ const categorySchema = new Schema({
 });
 
 categorySchema.virtual("url").get(function () {
-  return `/shop/${this.name}`;
+  if (this.name === "Women's clothing") {
+    return `/shop/womens_clothing`;
+  } else {
+    return `/shop/mens_clothing`;
+  }
 });
 
 module.exports = mongoose.model("Category", categorySchema);
