@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Inventory App by Chris Karampagias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body class="relative min-h-screen">
+    <main><%- content %></main>
+    <footer
+      class="absolute bottom-0 h-[70px] text-white bg-black w-full text-center text-5xl"
+    >
+      &copy; 2023 Chris Karampagias
+    </footer>
   </body>
 </html>
