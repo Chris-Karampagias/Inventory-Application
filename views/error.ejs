@@ -1,3 +1,5 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<% extend('index')%>
+
+<h1 class="text-4xl mt-10 ml-5"><%= message %></h1>
+<h2 class="font-bold mt-10 text-3xl ml-5"><%= error.status %></h2>
+<pre class="mt-10 ml-5"><%= error.stack %></pre>
