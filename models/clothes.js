@@ -11,17 +11,11 @@ const clothesSchema = new Schema({
     required: true,
   },
   stock_number: { type: Number, required: true },
-  image_path: {
-    type: String,
-    get: (v) => `../public/images/${v}`,
-    set: (v) => `../public/images/${v}`,
-    required: true,
-  },
   type: { type: String, required: true },
 });
 
 clothesSchema.virtual("url").get(function () {
-  if (clothesSchema.type === "men") {
+  if (this.type === "men") {
     return `/shop/mens_clothing/${this._id}`;
   } else {
     return `/shop/womens_clothing/${this._id}`;

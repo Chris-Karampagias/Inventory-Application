@@ -30,9 +30,6 @@ async function main() {
   mongoose.connection.close();
 }
 
-// We pass the index to the ...Create functions so that, for example,
-// genre[0] will always be the Fantasy genre, regardless of the order
-// in which the elements of promise.all's argument complete.
 async function categoryCreate(index, name, description, clothes) {
   const category = new Category({
     name: name,
@@ -49,7 +46,6 @@ async function clotheCreate(
   description,
   price,
   stock_number,
-  image_path,
   type
 ) {
   const clothe = new Clothes({
@@ -57,7 +53,6 @@ async function clotheCreate(
     description: description,
     price: price,
     stock_number: stock_number,
-    image_path: image_path,
     type: type,
   });
 
@@ -74,7 +69,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       19.999,
       23,
-      "mens-1.jpeg",
       "men"
     ),
     clotheCreate(
@@ -83,7 +77,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       29.99,
       14,
-      "mens-2.jpeg",
       "men"
     ),
     clotheCreate(
@@ -92,7 +85,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       22.99,
       27,
-      "mens-3.jpeg",
       "men"
     ),
     clotheCreate(
@@ -101,7 +93,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       24.99,
       29,
-      "mens-4.jpeg",
       "men"
     ),
     clotheCreate(
@@ -110,7 +101,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       21.99,
       10,
-      "mens-5.jpeg",
       "men"
     ),
     clotheCreate(
@@ -119,7 +109,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       34.99,
       31,
-      "womens-1.jpeg",
       "women"
     ),
     clotheCreate(
@@ -128,7 +117,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       25.99,
       22,
-      "womens-2.jpeg",
       "women"
     ),
     clotheCreate(
@@ -137,7 +125,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       54.99,
       8,
-      "womens-3.jpeg",
       "women"
     ),
     clotheCreate(
@@ -146,7 +133,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       45.99,
       2,
-      "womens-4.jpeg",
       "women"
     ),
     clotheCreate(
@@ -155,7 +141,6 @@ async function createClothes() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac arcu id mauris tempor sollicitudin at consequat libero. Aliquam aliquet.",
       27.99,
       54,
-      "womens-5.jpeg",
       "women"
     ),
   ]);
