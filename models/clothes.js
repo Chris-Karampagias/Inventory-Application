@@ -6,8 +6,18 @@ const clothesSchema = new Schema({
   description: { type: String, required: true },
   price: {
     type: Number,
-    get: (v) => v.toFixed(2),
-    set: (v) => v.toFixed(2),
+    get: (v) => {
+      if (typeof v !== "number") {
+        return;
+      }
+      v.toFixed(2);
+    },
+    set: (v) => {
+      if (typeof v !== "number") {
+        return;
+      }
+      v.toFixed(2);
+    },
     required: true,
   },
   stock_number: { type: Number, required: true },

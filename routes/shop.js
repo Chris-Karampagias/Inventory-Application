@@ -11,8 +11,8 @@ router.get("/mens_clothing", clotheController.mens_clothing_list);
 router.get("/womens_clothing", clotheController.womens_clothing_list);
 
 //Add clothing
-router.get("/create", clotheController.clothing_create_get);
-router.post("/create", clotheController.clothing_create_post);
+router.get("/clothe/create", clotheController.clothing_create_get);
+router.post("/clothe/create", clotheController.clothing_create_post);
 
 //View men's clothe detail
 router.get("/mens_clothing/:id", clotheController.clothing_detail);
