@@ -2,7 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const clothesSchema = new Schema({
-  name: { type: String, required: true, maxLength: 50 },
+  name: {
+    type: String,
+    set: (v) => {
+      if (v.includes("&#x27;")) {
+        return v.replace("&#x27;", "'");
+      }
+      return v;
+    },
+    required: true,
+    maxLength: 50,
+  },
   description: { type: String, required: true },
   price: {
     type: Number,
