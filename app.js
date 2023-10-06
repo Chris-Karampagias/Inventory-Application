@@ -3,18 +3,34 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const compression = require("compression");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 
 const indexRouter = require("./routes/index");
 const shopRouter = require("./routes/shop");
 
 const app = express();
 
+//compress all routes
+app.use(compression());
+
+//add helmet to middleware chain
+app.use(helmet());
+
+//set up rate limiter: max of 10 requests pre minute
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 10,
+});
+app.use(limiter);
+
 //mongodb connection setup
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 async function main() {
-  await mongoose.connect(MONGODB_URI);
+  await mongoose.connect(process.env.MONGODB_URI); //production env variable
 }
 
 try {
