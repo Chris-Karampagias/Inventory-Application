@@ -19,7 +19,7 @@ app.use(compression());
 app.use(helmet());
 
 //set up rate limiter: max of 10 requests pre minute
-const limiter = RateLimit({
+const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 10,
 });
