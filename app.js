@@ -12,11 +12,9 @@ const app = express();
 //mongodb connection setup
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const db_dev_url =
-  "mongodb+srv://admin:0000@cluster0.3qmhooj.mongodb.net/inventory_application_top?retryWrites=true&w=majority";
 
 async function main() {
-  await mongoose.connect(db_dev_url);
+  await mongoose.connect(MONGODB_URI);
 }
 
 try {
