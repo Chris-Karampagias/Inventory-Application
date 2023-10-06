@@ -1,0 +1,80 @@
+<% extend('index')%>
+
+<h1 class="text-5xl text-center mt-2"><%= title %></h1>
+<form
+  class="flex flex-col gap-10 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-3xl border-[1px] border-black p-10 rounded-2xl"
+  action=""
+  method="POST"
+>
+  <div>
+    <label for="name">Name: </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      value="<%= clothe === undefined ? '' : clothe.name%>"
+      placeholder="Input your name"
+      required
+      class="border-2 border-black p-2 rounded-xl placeholder:text-slate-500"
+    />
+  </div>
+  <div>
+    <label for="description">Description: </label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      value="<%= clothe === undefined ? '' : clothe.description%>"
+      placeholder="Book description"
+      required
+      class="border-2 border-black p-2 rounded-xl placeholder:text-slate-500"
+    />
+  </div>
+  <div>
+    <label for="price">Price: </label>
+    <input
+      type="text"
+      id="price"
+      name="price"
+      value="<%= clothe === undefined ? '' : clothe.price%>"
+      placeholder="Clothe price"
+      required
+      class="border-2 border-black p-2 rounded-xl placeholder:text-slate-500"
+    />
+  </div>
+  <div>
+    <label for="stock_number">Stock number: </label>
+    <input
+      type="text"
+      id="stock_number"
+      name="stock_number"
+      value="<%= clothe === undefined ? '' : clothe.stock_number%>"
+      placeholder="Number in stock"
+      required
+      class="border-2 border-black p-2 rounded-xl placeholder:text-slate-500"
+    />
+  </div>
+  <div class="flex gap-10">
+    <label for="type">Clothe type: </label>
+    <select name="type" id="type" required>
+      <%if(clothe === undefined || clothe.type === "men"){%>
+      <option value="men" selected>Men</option>
+      <option value="women">Women</option>
+      <%}else{%>
+      <option value="men">Men</option>
+      <option value="women" selected>Women</option>
+      <%}%>
+    </select>
+  </div>
+  <button
+    class="bg-slate-500 text-white rounded-2xl text-3xl w-1/2 p-2 ml-auto mr-auto"
+    type="submit"
+  >
+    Create clothe
+  </button>
+</form>
+<%if(errors){%> <%errors.forEach(error => {%>
+<ul class="ml-5 text-3xl font-bold">
+  <li><%=error.msg%></li>
+</ul>
+<%})%> <%}%>
