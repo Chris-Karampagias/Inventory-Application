@@ -28,10 +28,6 @@ router.post("/mens_clothing/:id/delete", clotheController.clothing_delete_post);
 //View women's clothe detail
 router.get("/womens_clothing/:id", clotheController.clothing_detail);
 
-//Add women's clothing
-router.get("/womens_clothing/create", clotheController.clothing_create_get);
-router.post("/womens_clothing/create", clotheController.clothing_create_post);
-
 //Update women's clothing
 router.get("/womens_clothing/:id/update", clotheController.clothing_update_get);
 router.post(
@@ -42,7 +38,7 @@ router.post(
 //Delete women's clothing
 router.get("/womens_clothing/:id/delete", clotheController.clothing_delete_get);
 router.post(
-  "womens_clothing/:id/delete",
+  "/womens_clothing/:id/delete",
   clotheController.clothing_delete_post
 );
 

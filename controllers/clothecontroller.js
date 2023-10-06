@@ -25,13 +25,13 @@ exports.clothing_detail = asyncHandler(async (req, res, next) => {
   res.render("clothe_detail", { clothe: clothe });
 });
 
-exports.clothing_create_get = asyncHandler(async (req, res, next) => {
+exports.clothing_create_get = (req, res, next) => {
   res.render("clothe_form", {
     title: "Create clothe",
     clothe: undefined,
     errors: null,
   });
-});
+};
 
 exports.clothing_create_post = [
   body("name", "Name is required").trim().isLength({ min: 1 }).escape(),
@@ -86,9 +86,41 @@ exports.clothing_update_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.clothing_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT YET IMPLEMENTED: delete get");
+  const clothe = await Clothes.findById(req.params.id, "name").orFail(
+    new Error("Could not find requested rescource")
+  );
+  res.render("clothe_delete", {
+    title: "Delete clothe",
+    name: clothe.name,
+    errors: null,
+  });
 });
 
-exports.clothing_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT YET IMPLEMENTED:  delete post");
-});
+exports.clothing_delete_post = [
+  body("password")
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage("Password is required!")
+    .equals("0000")
+    .withMessage("Wrong password!")
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const clothe = await Clothes.findById(req.params.id, "name").orFail(
+        new Error("Could not find requested rescource")
+      );
+      res.render("clothe_delete", {
+        title: "Delete clothe",
+        name: clothe.name,
+        errors: errors.array(),
+      });
+    } else {
+      next();
+    }
+  }),
+  asyncHandler(async (req, res, next) => {
+    await Clothes.findByIdAndDelete(req.params.id);
+    res.redirect("/shop");
+  }),
+];
