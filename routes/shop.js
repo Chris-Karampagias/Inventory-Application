@@ -6,6 +6,16 @@ const clotheController = require("../controllers/clothecontroller");
 //View categories (home page)
 router.get("/", categoryController.category_list);
 
+//Action confirmation page
+router.get(
+  "/clothe/:id/update/confirm_action",
+  clotheController.confirm_action_get
+);
+router.post(
+  "/clothe/:id/update/confirm_action",
+  clotheController.confirm_action_post
+);
+
 // View men's & women's clothing
 router.get("/mens_clothing", clotheController.mens_clothing_list);
 router.get("/womens_clothing", clotheController.womens_clothing_list);
